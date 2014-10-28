@@ -23,7 +23,17 @@ function onReady() {
 	$('nav').slideDown();
 	allSections.hide();
 
+
 }
+
+$('#exit-button').dblclick(function() {
+	//show the modal to the world
+	$('#confirm-exit-modal').modal();
+});
+
+$('#confirm-exit-button').click(function() {
+	window.location.href = 'http://courses.washington.edu/info343/morris';
+});
 
 allImgs.hover(function() {
 	//console.log($(this));
@@ -45,7 +55,7 @@ allNavLinks.click(function() {
 	//$(this).addClass('awesomesauce');
 
 	allSections.hide();
-	$($(this).attr('href')).fadeToggle(6000);
+	$($(this).attr('href')).fadeToggle(6000).addClass('awesomesauce');
 });
 
 $(onReady);
