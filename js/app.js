@@ -38,6 +38,74 @@ $('#game-board img').click(function() {
 	console.log(tileData2);
 });
 
+//iterate over array, calling passed function for each element
+//also works with objects
+var array = ['a', 'b', 'c', 'd'];
+
+_.forEach(array, function(element, index) {
+	console.log(element);
+	console.log(index);
+});
+
+_.difference(array, ['c', 'd']);
+
+var unionArray = _.union(array, ['e', 'f']);
+
+_.intersection(array, ['b', 'c']);
+
+var numArray = [1,2,3,4,5,6,7];
+
+//sho me the even values of the arra
+var evens = _.filter(numArray, function(num) {return 0 == num % 2;});
+console.log(evens);
+
+//shuffle() returns a new shuffled array,
+//leaving the original array intact
+var shuffledArray = _.shuffle(numArray);
+
+console.log(shuffledArray);
+console.log(numArray);
+console.log(array);
+console.log(unionArray);
+
+/*
+ .-') _          _   .-')       ('-.  ,---.,---.,---. 
+(  OO) )        ( '.( OO )_   _(  OO) |   ||   ||   | 
+/     '._ ,-.-') ,--.   ,--.)(,------.|   ||   ||   | 
+|'--...__)|  |OO)|   `.'   |  |  .---'|   ||   ||   | 
+'--.  .--'|  |  \|         |  |  |    |   ||   ||   | 
+   |  |   |  |(_/|  |'.'|  | (|  '--. |  .'|  .'|  .' 
+   |  |  ,|  |_.'|  |   |  |  |  .--' `--' `--' `--'  
+   |  | (_|  |   |  |   |  |  |  `---..--. .--. .--.  
+   `--'   `--'   `--'   `--'  `------''--' '--' '--'  
+*/
+
+var startTime = _.now();
+console.log(startTime);
+
+var timer; //hold our timer value
+
+//use window.setInterval to create a timer that runs a function
+//every second
+
+timer = window.setInterval(onTimer, 100);
+
+function onTimer () {
+	//compare _.now() to start time to get elapsed time
+	//Math.floor() rounds down to the nearest intege
+	var elapsedSeconds = Math.floor((_.now() - startTime) / 100);
+	console.log(elapsedSeconds);
+	$('#game-board h2').css("font-size", elapsedSeconds + 'px');
+}
+
+function stopTimer () {
+	window.clearInterval(timer);
+	$('#game-board').empty();
+}
+
+$('.jumbotron').click(stopTimer);
+
+
 /*
 //select all navigation links
 var allNavLinks = $('nav a');
